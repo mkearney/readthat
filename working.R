@@ -3,7 +3,7 @@ path <- "~/Dropbox/data.txt"
 
 x <- path
 bm_file <- bench::mark(
-  readit = readitcpp(x),
+  readthat = readthatcpp(x),
   readLines = readLines(x),
   readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
@@ -13,27 +13,27 @@ bm_file <- bench::mark(
 
 x <- url
 bm_html <- bench::mark(
-  readit = readitcpp(x),
+  readthat = readthatcpp(x),
   readLines = readLines(x),
   readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
   check = FALSE
 )
 
-substr(head(readitcpp(path)), 1, 100)
-substr(head(readitcpp(url)), 1, 100)
+substr(head(readthatcpp(path)), 1, 100)
+substr(head(readthatcpp(url)), 1, 100)
 substr(head(readtext::readtext(url)), 1, 100)
 
 library(lop)
 d <- tbl(
   readr = paste0(paste(readr::read_lines(x), collapse = "\n"), "\n"),
-  readit = readitcpp(x)
+  readthat = readthatcpp(x)
 )
 
 d
-identical(d$readr, d$readit)
+identical(d$readr, d$readthat)
 
-list(d$readit, d$readr) %>%
+list(d$readthat, d$readr) %>%
   tfse::substrev(50)
   lap(nchar)
 

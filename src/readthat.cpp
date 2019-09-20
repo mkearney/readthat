@@ -4,15 +4,8 @@
 
 using namespace Rcpp;
 
-
 // [[Rcpp::export]]
-CharacterVector prtestcpp(CharacterVector path) {
-  Rprintf("Hello, world!\n");
-  return path;
-}
-
-// [[Rcpp::export]]
-CharacterVector readitcpp(CharacterVector path) {
+CharacterVector readthatcpp(CharacterVector path) {
   std::string fname = as<std::string>(path);
   std::regex pat("(http)(.*)");
   if (std::regex_match(fname, pat)) {

@@ -1,4 +1,4 @@
-Package: readit
+Package: readthat
 Title: Read Text Data
 Version: 0.0.1
 Authors@R: 
@@ -16,5 +16,5 @@ LinkingTo:
     Rcpp
 Imports: 
     Rcpp
-URL: https://github.com/mkearney/readit
-BugReports: https://github.com/mkearney/readit/issues
+URL: https://github.com/mkearney/readthat
+BugReports: https://github.com/mkearney/readthat/issues
