@@ -39,7 +39,11 @@ list(d$readit, d$readr) %>%
 
 
 
-ggplot2::autoplot(bm_file)
+ggplot2::autoplot(bm_file) +
+  ggplot2::ggsave("man/figures/README-bm_file.png")
+ggplot2::autoplot(bm_html) +
+  ggplot2::ggsave("man/figures/README-bm_html.png")
+dir.create("man/figures")
 ggplot2::autoplot(bm_html)
 bm_file
 bm_html
