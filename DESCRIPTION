@@ -1,0 +1,18 @@
+Package: readit
+Title: Read Text Data
+Version: 0.0.1
+Authors@R: 
+    person(given = "Michael W.",
+           family = "Kearney",
+           role = c("aut", "cre"),
+           email = "kearneymw@missouri.edu",
+           comment = c(ORCID = "0000-0002-0730-4694"))
+Description: Quickly read in text from files or URLs.
+License: MIT + file LICENSE
+Encoding: UTF-8
+LazyData: true
+RoxygenNote: 6.1.1
+LinkingTo: 
+    Rcpp
+Imports: 
+    Rcpp
