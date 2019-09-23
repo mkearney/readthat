@@ -45,9 +45,9 @@ bm_file <- bench::mark(
   check = FALSE
 )
 bm_file
-ggplot2::autoplot(bm_file)
 ```
 
+![](man/figures/README-unnamed-chunk-2-1.png)
 
 Benchmark comparison for reading a web page:
 
@@ -63,6 +63,7 @@ bm_html <- bench::mark(
   iterations = 10
 )
 bm_html
-ggplot2::autoplot(bm_html)
 ```
+
+![](man/figures/README-unnamed-chunk-3-1.png)
 

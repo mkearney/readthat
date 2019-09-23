@@ -39,15 +39,13 @@ bm_file
 #> # A tibble: 4 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext    796.1µs  832.3µs     1180.    5.38MB    10.3 
-#> 2 readr       156.8µs  162.6µs     5915.    2.69MB    10.4 
-#> 3 readthat     27.7µs   28.9µs    33364.   21.69KB     0   
-#> 4 readLines   132.2µs    142µs     6904.   10.54KB     2.01
-ggplot2::autoplot(bm_file)
-#> Loading required namespace: tidyr
+#> 1 readtext    794.1µs  821.3µs     1212.    5.38MB    12.5 
+#> 2 readr       157.2µs  161.8µs     6053.    2.69MB    10.4 
+#> 3 readthat     28.2µs   28.7µs    33863.   21.69KB     0   
+#> 4 readLines   130.8µs  132.6µs     7424.   10.54KB     2.01
 ```
 
-<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-2-1.png)
 
 Benchmark comparison for reading a web page:
 
@@ -66,12 +64,11 @@ bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr         77.8ms    221ms      5.36    2.81MB    0    
-#> 2 xml2        211.7ms    252ms      3.84    1.88MB    0.960
-#> 3 readthat    220.7ms    254ms      3.80   643.3KB    0    
-#> 4 readLines   335.7ms    425ms      2.22  643.17KB    0    
-#> 5 readr       157.8ms    189ms      2.72  845.47KB    0
-ggplot2::autoplot(bm_html)
+#> 1 httr          102ms    169ms      5.18    2.82MB    0.576
+#> 2 xml2          194ms    242ms      4.10    1.86MB    1.76 
+#> 3 readthat      180ms    296ms      3.28  635.16KB    0    
+#> 4 readLines     302ms    363ms      2.47  633.88KB    0    
+#> 5 readr         162ms    191ms      4.89  827.15KB    0
 ```
 
-<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />
+![](man/figures/README-unnamed-chunk-3-1.png)
