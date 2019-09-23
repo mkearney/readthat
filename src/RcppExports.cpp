@@ -16,17 +16,6 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// readthatcpp2
-CharacterVector readthatcpp2(std::string path);
-RcppExport SEXP _readthat_readthatcpp2(SEXP pathSEXP) {
-BEGIN_RCPP
-    Rcpp::RObject rcpp_result_gen;
-    Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
-    rcpp_result_gen = Rcpp::wrap(readthatcpp2(path));
-    return rcpp_result_gen;
-END_RCPP
-}
 // path_current
 std::string path_current();
 RcppExport SEXP _readthat_path_current() {
@@ -193,7 +182,6 @@ END_RCPP
 
 static const R_CallMethodDef CallEntries[] = {
     {"_readthat_readthatcpp", (DL_FUNC) &_readthat_readthatcpp, 1},
-    {"_readthat_readthatcpp2", (DL_FUNC) &_readthat_readthatcpp2, 1},
     {"_readthat_path_current", (DL_FUNC) &_readthat_path_current, 0},
     {"_readthat_path_absolute", (DL_FUNC) &_readthat_path_absolute, 1},
     {"_readthat_path_canonical", (DL_FUNC) &_readthat_path_canonical, 1},

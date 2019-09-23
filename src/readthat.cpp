@@ -45,52 +45,15 @@ CharacterVector readthatcpp(std::string path) {
   // if URL then use curlpp
   std::regex pat("(http)(.*)");
   if (std::regex_match(path, pat)) {
-    std::stringstream content;
-    //curlpp::Cleanup cleaner;
-    curlpp::Easy request;
-    request.setOpt(new curlpp::options::WriteStream(&content));
-    request.setOpt(new curlpp::options::Url(path));
-    request.perform();
-
-    return content.str();
+    std::ostringstream os;
+    curlpp::Easy req;
+    req.setOpt(curlpp::options::Url(path));
+    os << req;
+    return os.str();
   }
 
   // otherwise read local file
   path = path_absolute_(path);
-  std::ifstream in(path.c_str());
-  std::string content;
-  in.seekg(0, std::ios::end);
-  content.resize(in.tellg());
-  in.seekg(0, std::ios::beg);
-  in.imbue( std::locale() );
-  in.read(&content[0], content.size());
-  in.close();
-  return content;
-}
-
-
-
-
-
-
-// [[Rcpp::export]]
-CharacterVector readthatcpp2(std::string path) {
-
-  // if URL then use curlpp
-  std::regex pat("(http)(.*)");
-  if (std::regex_match(path, pat)) {
-    // create output buffer
-    std::stringstream content;
-    // open and read connection
-    curlpp::Cleanup cleaner;
-    curlpp::Easy request;
-    content << curlpp::options::Url(path) << std::endl;
-    return content.str();
-  }
-
-  // otherwise read local file
-  Function normalize_path("normalizePath");
-  path = as<std::string>(normalize_path(path));
   std::ifstream in(path.c_str());
   std::string content;
   in.seekg(0, std::ios::end);
