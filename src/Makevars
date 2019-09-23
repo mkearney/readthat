@@ -1,2 +1,2 @@
-PKG_LIBS = -lcurl -lcurlpp -lstdc++fs
+PKG_LIBS = -lcurl -lcurlpp
 CXX_STD = CXX17
