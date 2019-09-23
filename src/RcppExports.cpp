@@ -6,19 +6,209 @@
 using namespace Rcpp;
 
 // readthatcpp
-CharacterVector readthatcpp(CharacterVector path);
+CharacterVector readthatcpp(std::string path);
 RcppExport SEXP _readthat_readthatcpp(SEXP pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< CharacterVector >::type path(pathSEXP);
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
     rcpp_result_gen = Rcpp::wrap(readthatcpp(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// readthatcpp2
+CharacterVector readthatcpp2(std::string path);
+RcppExport SEXP _readthat_readthatcpp2(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(readthatcpp2(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_current
+std::string path_current();
+RcppExport SEXP _readthat_path_current() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(path_current());
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_absolute
+std::string path_absolute(std::string path);
+RcppExport SEXP _readthat_path_absolute(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_absolute(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_canonical
+std::string path_canonical(std::string path);
+RcppExport SEXP _readthat_path_canonical(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_canonical(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_relative
+std::string path_relative(std::string path);
+RcppExport SEXP _readthat_path_relative(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_relative(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_expand
+std::string path_expand(std::string path);
+RcppExport SEXP _readthat_path_expand(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_expand(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_copy
+std::string path_copy(std::string from, std::string to, bool recursive);
+RcppExport SEXP _readthat_path_copy(SEXP fromSEXP, SEXP toSEXP, SEXP recursiveSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type from(fromSEXP);
+    Rcpp::traits::input_parameter< std::string >::type to(toSEXP);
+    Rcpp::traits::input_parameter< bool >::type recursive(recursiveSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_copy(from, to, recursive));
+    return rcpp_result_gen;
+END_RCPP
+}
+// directory_create
+bool directory_create(std::string dir);
+RcppExport SEXP _readthat_directory_create(SEXP dirSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type dir(dirSEXP);
+    rcpp_result_gen = Rcpp::wrap(directory_create(dir));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_exists
+bool path_exists(std::string path);
+RcppExport SEXP _readthat_path_exists(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_exists(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_remove
+bool path_remove(std::string path);
+RcppExport SEXP _readthat_path_remove(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_remove(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// tmp_dir
+std::string tmp_dir();
+RcppExport SEXP _readthat_tmp_dir() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(tmp_dir());
+    return rcpp_result_gen;
+END_RCPP
+}
+// tmp_path
+std::string tmp_path();
+RcppExport SEXP _readthat_tmp_path() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(tmp_path());
+    return rcpp_result_gen;
+END_RCPP
+}
+// current_root
+std::string current_root();
+RcppExport SEXP _readthat_current_root() {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    rcpp_result_gen = Rcpp::wrap(current_root());
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_size
+int path_size(std::string path);
+RcppExport SEXP _readthat_path_size(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_size(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// path_space
+DataFrame path_space(std::string path);
+RcppExport SEXP _readthat_path_space(SEXP pathSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type path(pathSEXP);
+    rcpp_result_gen = Rcpp::wrap(path_space(path));
+    return rcpp_result_gen;
+END_RCPP
+}
+// as_tbl
+DataFrame as_tbl(List x);
+RcppExport SEXP _readthat_as_tbl(SEXP xSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< List >::type x(xSEXP);
+    rcpp_result_gen = Rcpp::wrap(as_tbl(x));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_readthat_readthatcpp", (DL_FUNC) &_readthat_readthatcpp, 1},
+    {"_readthat_readthatcpp2", (DL_FUNC) &_readthat_readthatcpp2, 1},
+    {"_readthat_path_current", (DL_FUNC) &_readthat_path_current, 0},
+    {"_readthat_path_absolute", (DL_FUNC) &_readthat_path_absolute, 1},
+    {"_readthat_path_canonical", (DL_FUNC) &_readthat_path_canonical, 1},
+    {"_readthat_path_relative", (DL_FUNC) &_readthat_path_relative, 1},
+    {"_readthat_path_expand", (DL_FUNC) &_readthat_path_expand, 1},
+    {"_readthat_path_copy", (DL_FUNC) &_readthat_path_copy, 3},
+    {"_readthat_directory_create", (DL_FUNC) &_readthat_directory_create, 1},
+    {"_readthat_path_exists", (DL_FUNC) &_readthat_path_exists, 1},
+    {"_readthat_path_remove", (DL_FUNC) &_readthat_path_remove, 1},
+    {"_readthat_tmp_dir", (DL_FUNC) &_readthat_tmp_dir, 0},
+    {"_readthat_tmp_path", (DL_FUNC) &_readthat_tmp_path, 0},
+    {"_readthat_current_root", (DL_FUNC) &_readthat_current_root, 0},
+    {"_readthat_path_size", (DL_FUNC) &_readthat_path_size, 1},
+    {"_readthat_path_space", (DL_FUNC) &_readthat_path_space, 1},
+    {"_readthat_as_tbl", (DL_FUNC) &_readthat_as_tbl, 1},
     {NULL, NULL, 0}
 };
 

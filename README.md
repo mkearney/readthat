@@ -29,44 +29,49 @@ Benchmark comparison for reading a text file:
 ``` r
 x <- "~/Dropbox/data.txt"
 bm_file <- bench::mark(
-  readthat = readthatcpp(x),
-  readLines = readLines(x),
   readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
+  readthat = readthat(x),
+  readLines = readLines(x),
   check = FALSE
 )
-#> # A tibble: 4 x 13
-#>   expression     min  median `itr/sec` mem_alloc `gc/sec` n_itr  n_gc total_time
-#>   <bch:expr> <bch:t> <bch:t>     <dbl> <bch:byt>    <dbl> <int> <dbl>   <bch:tm>
-#> 1 readthat      37.1µs  38.3µs    25547.    2.49KB    10.2   9996     4      391ms
-#> 2 readLines  132.9µs   137µs     7149.    12.7KB     2.02  3539     1      495ms
-#> 3 readtext   808.4µs 825.4µs     1199.    4.74MB    10.5    572     5      477ms
-#> 4 readr      163.8µs   169µs     5766.    2.58MB    10.4   2777     5      482ms
-#> # … with 4 more variables: result <list>, memory <list>, time <list>, gc <list>
+bm_file
+#> # A tibble: 4 x 6
+#>   expression      min   median `itr/sec` mem_alloc `gc/sec`
+#>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
+#> 1 readtext    799.4µs    826µs     1206.    5.38MB    10.3 
+#> 2 readr       157.8µs    164µs     5978.    2.69MB    10.4 
+#> 3 readthat     32.4µs     33µs    29569.   31.23KB     0   
+#> 4 readLines   130.5µs    132µs     7411.   10.54KB     2.01
+ggplot2::autoplot(bm_file)
+#> Loading required namespace: tidyr
 ```
 
-![](man/figures/README-bm_file.png)
+<img src="man/figures/README-unnamed-chunk-2-1.png" width="100%" />
 
-Benchmark comparison for reading a web
-page:
+Benchmark comparison for reading a web page:
 
 ``` r
-x <- "https://mikewk.com/post/2019-04-23-three-things-to-know-beyond-base-r/index.html"
+x <- "https://www.espn.com/nfl/scoreboard"
 bm_html <- bench::mark(
-  readthat = readthatcpp(x),
-  readLines = readLines(x),
-  readtext = readtext::readtext(x),
+  httr = httr::content(httr::GET(x), as = "text", encoding = "UTF-8"),
+  xml2 = xml2::read_html(x),
+  readthat = readthat(x),
+  readLines = readLines(x, warn = FALSE),
   readr = readr::read_lines(x),
-  check = FALSE
+  check = FALSE,
+  iterations = 10
 )
-#> # A tibble: 4 x 13
-#>   expression      min   median `itr/sec` mem_alloc `gc/sec` n_itr  n_gc total_time
-#>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl> <int> <dbl>   <bch:tm>
-#> 1 readthat      18.57ms  22.85ms     43.6     35.6KB     0       22     0      505ms
-#> 2 readLines  199.43ms 220.94ms      4.68    11.3KB     0        3     0      641ms
-#> 3 readtext     4.88ms   4.99ms    186.     621.6KB     8.74    85     4      458ms
-#> 4 readr       77.41ms  89.58ms     10.7      169KB     0        6     0      558ms
-#> # … with 4 more variables: result <list>, memory <list>, time <list>, gc <list>
+bm_html
+#> # A tibble: 5 x 6
+#>   expression      min   median `itr/sec` mem_alloc `gc/sec`
+#>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
+#> 1 httr         94.4ms    215ms      5.13    2.81MB    0    
+#> 2 xml2        227.3ms    256ms      3.73    1.88MB    0.932
+#> 3 readthat    218.5ms    340ms      2.93  642.95KB    0    
+#> 4 readLines   336.1ms    412ms      2.25  643.75KB    0    
+#> 5 readr       151.4ms    165ms      5.47  840.13KB    0
+ggplot2::autoplot(bm_html)
 ```
 
-![](man/figures/README-bm_html.png)
+<img src="man/figures/README-unnamed-chunk-3-1.png" width="100%" />

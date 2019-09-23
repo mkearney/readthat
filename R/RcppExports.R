@@ -5,3 +5,67 @@ readthatcpp <- function(path) {
     .Call(`_readthat_readthatcpp`, path)
 }
 
+readthatcpp2 <- function(path) {
+    .Call(`_readthat_readthatcpp2`, path)
+}
+
+path_current <- function() {
+    .Call(`_readthat_path_current`)
+}
+
+path_absolute <- function(path = ".") {
+    .Call(`_readthat_path_absolute`, path)
+}
+
+path_canonical <- function(path = ".") {
+    .Call(`_readthat_path_canonical`, path)
+}
+
+path_relative <- function(path = ".") {
+    .Call(`_readthat_path_relative`, path)
+}
+
+path_expand <- function(path) {
+    .Call(`_readthat_path_expand`, path)
+}
+
+path_copy <- function(from, to, recursive = FALSE) {
+    .Call(`_readthat_path_copy`, from, to, recursive)
+}
+
+directory_create <- function(dir) {
+    .Call(`_readthat_directory_create`, dir)
+}
+
+path_exists <- function(path) {
+    .Call(`_readthat_path_exists`, path)
+}
+
+path_remove <- function(path) {
+    .Call(`_readthat_path_remove`, path)
+}
+
+tmp_dir <- function() {
+    .Call(`_readthat_tmp_dir`)
+}
+
+tmp_path <- function() {
+    .Call(`_readthat_tmp_path`)
+}
+
+current_root <- function() {
+    .Call(`_readthat_current_root`)
+}
+
+path_size <- function(path) {
+    .Call(`_readthat_path_size`, path)
+}
+
+path_space <- function(path) {
+    .Call(`_readthat_path_space`, path)
+}
+
+as_tbl <- function(x) {
+    .Call(`_readthat_as_tbl`, x)
+}
+
