@@ -5,6 +5,10 @@ readthatcpp <- function(path) {
     .Call(`_readthat_readthatcpp`, path)
 }
 
+readthatcpp2 <- function(path) {
+    .Call(`_readthat_readthatcpp2`, path)
+}
+
 path_current <- function() {
     .Call(`_readthat_path_current`)
 }
