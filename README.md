@@ -39,10 +39,10 @@ bm_file
 #> # A tibble: 4 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext    799.4µs    826µs     1206.    5.38MB    10.3 
-#> 2 readr       157.8µs    164µs     5978.    2.69MB    10.4 
-#> 3 readthat     32.4µs     33µs    29569.   31.23KB     0   
-#> 4 readLines   130.5µs    132µs     7411.   10.54KB     2.01
+#> 1 readtext    799.6µs    828µs     1201.    5.38MB    10.3 
+#> 2 readr       159.2µs    164µs     5955.    2.69MB    10.4 
+#> 3 readthat     32.4µs     33µs    29557.   21.69KB     0   
+#> 4 readLines   131.4µs    133µs     7398.   10.54KB     2.01
 ggplot2::autoplot(bm_file)
 #> Loading required namespace: tidyr
 ```
@@ -66,11 +66,11 @@ bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr         94.4ms    215ms      5.13    2.81MB    0    
-#> 2 xml2        227.3ms    256ms      3.73    1.88MB    0.932
-#> 3 readthat    218.5ms    340ms      2.93  642.95KB    0    
-#> 4 readLines   336.1ms    412ms      2.25  643.75KB    0    
-#> 5 readr       151.4ms    165ms      5.47  840.13KB    0
+#> 1 httr          106ms    122ms      6.24    2.81MB     0   
+#> 2 xml2          190ms    223ms      4.29    1.88MB     1.07
+#> 3 readthat      246ms    289ms      3.29  642.95KB     0   
+#> 4 readLines     324ms    353ms      2.75  643.75KB     0   
+#> 5 readr         150ms    170ms      5.97  840.13KB     0
 ggplot2::autoplot(bm_html)
 ```
 
