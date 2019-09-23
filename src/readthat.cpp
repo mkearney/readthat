@@ -36,7 +36,9 @@ CharacterVector readthatcpp(std::string path) {
     std::ostringstream os;
     curlpp::Easy req;
     req.setOpt(curlpp::options::Url(path));
+    cURLpp::initialize();
     os << req;
+    cURLpp::terminate();
     return os.str();
   }
 
