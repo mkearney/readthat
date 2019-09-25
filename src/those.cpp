@@ -46,7 +46,7 @@ std::string readit(std::string path) {
 }
 
 // [[Rcpp::export]]
-std::vector<std::string> readthosecpp(std::vector<std::string> urls) {
+StringVector readthosecpp(std::vector<std::string> urls) {
   std::vector<std::string> outs(urls.size());
   for (int i = 0; i < urls.size(); ++i) {
     char name[L_tmpnam];
@@ -62,10 +62,13 @@ std::vector<std::string> readthosecpp(std::vector<std::string> urls) {
   for(auto& p: dwnld){
     p.join();
   }
-  std::vector<std::string> contents(urls.size());
+  //std::vector<std::string> contents(urls.size());
+  StringVector contents(urls.size());
+
   for (int i = 0; i < outs.size(); ++i) {
     contents[i] = readit(outs[i]);
   }
+  contents.attr("names") = urls;
   return contents;
 }
 

@@ -12,4 +12,12 @@ readthat.default <- function(.x) {
   readthatcpp(.x)
 }
 
+#' @inheritParams readthat
+#' @rdname readthat
+#' @export
+readthat2 <- function(.x) UseMethod("readthat2")
 
+#' @export
+readthat2.default <- function(.x) {
+  readthatcpp2(.x)
+}

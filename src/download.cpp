@@ -16,7 +16,7 @@ static std::size_t write_data_string(void *ptr,
 
 
 // [[Rcpp::export]]
-std::string readthiscpp(std::string url) {
+std::string readthatcpp2(std::string url) {
   curl_global_init(CURL_GLOBAL_ALL);
 
   CURL *handle = curl_easy_init();

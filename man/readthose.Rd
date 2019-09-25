@@ -2,9 +2,12 @@
 % Please edit documentation in R/read-those.R, R/readthose.R
 \name{readthose}
 \alias{readthose}
+\alias{readthose2}
 \title{Read file(s)/webpage(s)}
 \usage{
 readthose(.x)
+
+readthose2(.x)
 
 readthose(.x)
 }

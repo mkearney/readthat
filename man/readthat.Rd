@@ -2,9 +2,12 @@
 % Please edit documentation in R/read-that.R, R/that.R
 \name{readthat}
 \alias{readthat}
+\alias{readthat2}
 \title{Read file/webpage}
 \usage{
 readthat(.x)
+
+readthat2(.x)
 
 readthat(.x)
 }

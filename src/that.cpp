@@ -78,7 +78,7 @@ std::future<std::string> invoke(std::string const& url) {
 
 
 // [[Rcpp::export]]
-std::vector<std::string> asyncpp(std::vector<std::string> urls) {
+std::vector<std::string> readthosecpp2(std::vector<std::string> urls) {
   int n = urls.size();
   std::vector<std::string> lst = std::vector<std::string>(n);
   for (int i = 0; i < n; ++i) {

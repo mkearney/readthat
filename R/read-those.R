@@ -12,3 +12,13 @@ readthose <- function(.x) UseMethod("readthose")
 readthose.default <- function(.x) {
   readthosecpp(.x)
 }
+
+#' @inheritParams readthose
+#' @rdname readthose
+#' @export
+readthose2 <- function(.x) UseMethod("readthose2")
+
+#' @export
+readthose2.default <- function(.x) {
+  readthosecpp2(.x)
+}

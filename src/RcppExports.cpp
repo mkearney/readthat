@@ -5,14 +5,14 @@
 
 using namespace Rcpp;
 
-// readthiscpp
-std::string readthiscpp(std::string url);
-RcppExport SEXP _readthat_readthiscpp(SEXP urlSEXP) {
+// readthatcpp2
+std::string readthatcpp2(std::string url);
+RcppExport SEXP _readthat_readthatcpp2(SEXP urlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::string >::type url(urlSEXP);
-    rcpp_result_gen = Rcpp::wrap(readthiscpp(url));
+    rcpp_result_gen = Rcpp::wrap(readthatcpp2(url));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -39,19 +39,19 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// asyncpp
-std::vector<std::string> asyncpp(std::vector<std::string> urls);
-RcppExport SEXP _readthat_asyncpp(SEXP urlsSEXP) {
+// readthosecpp2
+std::vector<std::string> readthosecpp2(std::vector<std::string> urls);
+RcppExport SEXP _readthat_readthosecpp2(SEXP urlsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::vector<std::string> >::type urls(urlsSEXP);
-    rcpp_result_gen = Rcpp::wrap(asyncpp(urls));
+    rcpp_result_gen = Rcpp::wrap(readthosecpp2(urls));
     return rcpp_result_gen;
 END_RCPP
 }
 // readthosecpp
-std::vector<std::string> readthosecpp(std::vector<std::string> urls);
+StringVector readthosecpp(std::vector<std::string> urls);
 RcppExport SEXP _readthat_readthosecpp(SEXP urlsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -75,10 +75,10 @@ END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
-    {"_readthat_readthiscpp", (DL_FUNC) &_readthat_readthiscpp, 1},
+    {"_readthat_readthatcpp2", (DL_FUNC) &_readthat_readthatcpp2, 1},
     {"_readthat_downloadthatcpp", (DL_FUNC) &_readthat_downloadthatcpp, 2},
     {"_readthat_readthatcpp", (DL_FUNC) &_readthat_readthatcpp, 1},
-    {"_readthat_asyncpp", (DL_FUNC) &_readthat_asyncpp, 1},
+    {"_readthat_readthosecpp2", (DL_FUNC) &_readthat_readthosecpp2, 1},
     {"_readthat_readthosecpp", (DL_FUNC) &_readthat_readthosecpp, 1},
     {"_readthat_downloadthosecpp", (DL_FUNC) &_readthat_downloadthosecpp, 2},
     {NULL, NULL, 0}

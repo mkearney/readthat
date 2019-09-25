@@ -8,6 +8,14 @@ urls <- c(
 
 outs <- dapr::vap_chr(urls, ~ tempfile())
 
+readthat(urls[5])
+downloadthat(urls[5], "/tmp/mikewkcom.html")
+x <- readthose(urls)
+str(x, 1)
+
+o <- dapr::vap_int(x, nchar)
+
+
 x <- readthosecpp(urls)
 substr(x, 1, 100)
 
@@ -19,3 +27,5 @@ m <- bench::mark(
 )
 m
 ggplot2::autoplot(m)
+
+
