@@ -1,2 +1,2 @@
-PKG_LIBS = -lcurl -lcurlpp
-CXX_STD = CXX17
+PKG_LIBS = -lcurl
+CXX_STD = CXX11
