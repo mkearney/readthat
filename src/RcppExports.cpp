@@ -6,7 +6,7 @@
 using namespace Rcpp;
 
 // readthatcpp2
-std::string readthatcpp2(std::string url);
+StringVector readthatcpp2(std::string url);
 RcppExport SEXP _readthat_readthatcpp2(SEXP urlSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -29,7 +29,7 @@ BEGIN_RCPP
 END_RCPP
 }
 // readthatcpp
-CharacterVector readthatcpp(std::string path);
+StringVector readthatcpp(std::string path);
 RcppExport SEXP _readthat_readthatcpp(SEXP pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
@@ -40,29 +40,29 @@ BEGIN_RCPP
 END_RCPP
 }
 // readthosecpp2
-std::vector<std::string> readthosecpp2(std::vector<std::string> urls);
-RcppExport SEXP _readthat_readthosecpp2(SEXP urlsSEXP) {
+StringVector readthosecpp2(std::vector<std::string> paths);
+RcppExport SEXP _readthat_readthosecpp2(SEXP pathsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type urls(urlsSEXP);
-    rcpp_result_gen = Rcpp::wrap(readthosecpp2(urls));
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type paths(pathsSEXP);
+    rcpp_result_gen = Rcpp::wrap(readthosecpp2(paths));
     return rcpp_result_gen;
 END_RCPP
 }
 // readthosecpp
-StringVector readthosecpp(std::vector<std::string> urls);
-RcppExport SEXP _readthat_readthosecpp(SEXP urlsSEXP) {
+StringVector readthosecpp(std::vector<std::string> paths);
+RcppExport SEXP _readthat_readthosecpp(SEXP pathsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::vector<std::string> >::type urls(urlsSEXP);
-    rcpp_result_gen = Rcpp::wrap(readthosecpp(urls));
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type paths(pathsSEXP);
+    rcpp_result_gen = Rcpp::wrap(readthosecpp(paths));
     return rcpp_result_gen;
 END_RCPP
 }
 // downloadthosecpp
-std::vector<std::string> downloadthosecpp(std::vector<std::string> urls, std::vector<std::string> outs);
+StringVector downloadthosecpp(std::vector<std::string> urls, std::vector<std::string> outs);
 RcppExport SEXP _readthat_downloadthosecpp(SEXP urlsSEXP, SEXP outsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;

@@ -16,7 +16,7 @@ static std::size_t write_data_string(void *ptr,
 
 
 // [[Rcpp::export]]
-std::string readthatcpp2(std::string url) {
+StringVector readthatcpp2(std::string url) {
   curl_global_init(CURL_GLOBAL_ALL);
 
   CURL *handle = curl_easy_init();
@@ -46,7 +46,9 @@ std::string readthatcpp2(std::string url) {
   curl_easy_cleanup(handle);
   curl_global_cleanup();
 
-  return out.str();
+  StringVector content = out.str();
+  content.attr("names") = url;
+  return content;
 }
 
 static std::size_t write_data_file(void *ptr,

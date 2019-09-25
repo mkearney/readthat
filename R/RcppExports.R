@@ -13,12 +13,12 @@ readthatcpp <- function(path) {
     .Call(`_readthat_readthatcpp`, path)
 }
 
-readthosecpp2 <- function(urls) {
-    .Call(`_readthat_readthosecpp2`, urls)
+readthosecpp2 <- function(paths) {
+    .Call(`_readthat_readthosecpp2`, paths)
 }
 
-readthosecpp <- function(urls) {
-    .Call(`_readthat_readthosecpp`, urls)
+readthosecpp <- function(paths) {
+    .Call(`_readthat_readthosecpp`, paths)
 }
 
 downloadthosecpp <- function(urls, outs) {

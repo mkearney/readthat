@@ -18,3 +18,5 @@ URL: https://github.com/mkearney/readthat
 BugReports: https://github.com/mkearney/readthat/issues
 LinkingTo: 
     Rcpp
+Suggests: 
+    testthat (>= 2.1.0)
