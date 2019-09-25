@@ -19,6 +19,8 @@ library(readthat)
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/readthat)](https://CRAN.R-project.org/package=readthat)
 [![Lifecycle: experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build status](https://travis-ci.org/mkearney/readthat.svg?branch=master)](https://travis-ci.org/mkearney/readthat)
+[![Codecov test coverage](https://codecov.io/gh/mkearney/readthat/branch/master/graph/badge.svg)](https://codecov.io/gh/mkearney/readthat?branch=master)
 <!-- badges: end -->
 
 Quickly read text/source from local files and web pages.

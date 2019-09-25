@@ -9,6 +9,10 @@
 status](https://www.r-pkg.org/badges/version/readthat)](https://CRAN.R-project.org/package=readthat)
 [![Lifecycle:
 experimental](https://img.shields.io/badge/lifecycle-experimental-orange.svg)](https://www.tidyverse.org/lifecycle/#experimental)
+[![Travis build
+status](https://travis-ci.org/mkearney/readthat.svg?branch=master)](https://travis-ci.org/mkearney/readthat)
+[![Codecov test
+coverage](https://codecov.io/gh/mkearney/readthat/branch/master/graph/badge.svg)](https://codecov.io/gh/mkearney/readthat?branch=master)
 <!-- badges: end -->
 
 Quickly read text/source from local files and web pages.
@@ -79,10 +83,10 @@ bm_file
 #> # A tibble: 4 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext    795.3µs    824µs     1206.    5.38MB    12.5 
-#> 2 readr       159.4µs    164µs     5983.    2.69MB    10.4 
-#> 3 readthat     28.3µs     29µs    33276.   11.06KB     0   
-#> 4 readLines   131.3µs    133µs     7381.   10.54KB     2.01
+#> 1 readtext    795.5µs    831µs     1196.    5.38MB    12.5 
+#> 2 readr       159.8µs    165µs     5902.    2.69MB    10.4 
+#> 3 readthat     28.3µs     29µs    33635.   11.06KB     0   
+#> 4 readLines   132.6µs    134µs     7283.   10.54KB     2.01
 ```
 
 ![](man/figures/README-bm_file.png)
@@ -105,11 +109,11 @@ bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr          114ms    246ms      4.43       4MB     0   
-#> 2 xml2          310ms    326ms      2.83    2.65MB     1.88
-#> 3 readthat      232ms    303ms      3.11    1.01MB     0   
-#> 4 readLines     360ms    441ms      2.22    1.03MB     0   
-#> 5 readr         158ms    174ms      4.90    1.21MB     0
+#> 1 httr         79.5ms    158ms      5.52       4MB     0   
+#> 2 xml2          316ms    335ms      2.72    2.65MB     1.81
+#> 3 readthat      217ms    253ms      3.21    1.01MB     0   
+#> 4 readLines   321.9ms    365ms      2.58    1.03MB     0   
+#> 5 readr       168.1ms    173ms      5.28    1.21MB     0
 ```
 
 ![](man/figures/README-bm_html.png)
