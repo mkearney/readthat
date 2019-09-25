@@ -6,6 +6,7 @@
 #include <iostream>
 #include <fstream>
 #include <string>
+#include <cstdio>
 
 #include <thread>
 #include <vector>
@@ -18,9 +19,8 @@ using namespace std::literals;
 
 namespace {
 
-void Download(const std::string& url, unsigned line, const std::string& out) {
+void readone(const std::string& url, const std::string& out) {
   std::ofstream of(out);
-
   cURLpp::Easy req;
   req.setOpt(cURLpp::Options::Url(url));
   req.setOpt(cURLpp::Options::NoProgress(true));
@@ -46,20 +46,20 @@ std::string readit(std::string path) {
 }
 
 // [[Rcpp::export]]
-std::vector<std::string> readthemcpp(std::vector<std::string> urls, std::vector<std::string> outs) {
-  cURLpp::initialize();
-  unsigned line = 1;
-
-  std::vector<std::thread> currDownloading;
-
-  //for(const auto& p: urls) {
+std::vector<std::string> readthosecpp(std::vector<std::string> urls) {
+  std::vector<std::string> outs(urls.size());
   for (int i = 0; i < urls.size(); ++i) {
-    line = line + 1;
-    currDownloading.emplace_back([p = urls[i], l = line, o = outs[i]]{
-      Download(p, l, o);
+    char name[L_tmpnam];
+    outs[i] = std::tmpnam(name);
+  }
+  cURLpp::initialize();
+  std::vector<std::thread> dwnld;
+  for (int i = 0; i < urls.size(); ++i) {
+    dwnld.emplace_back([p = urls[i], o = outs[i]]{
+      readone(p, o);
     });
   }
-  for(auto& p: currDownloading){
+  for(auto& p: dwnld){
     p.join();
   }
   std::vector<std::string> contents(urls.size());
@@ -67,6 +67,22 @@ std::vector<std::string> readthemcpp(std::vector<std::string> urls, std::vector<
     contents[i] = readit(outs[i]);
   }
   return contents;
+}
+
+
+// [[Rcpp::export]]
+std::vector<std::string> downloadthosecpp(std::vector<std::string> urls, std::vector<std::string> outs) {
+  cURLpp::initialize();
+  std::vector<std::thread> dwnld;
+  for (int i = 0; i < urls.size(); ++i) {
+    dwnld.emplace_back([p = urls[i], o = outs[i]]{
+      readone(p, o);
+    });
+  }
+  for(auto& p: dwnld){
+    p.join();
+  }
+  return outs;
 }
 
 

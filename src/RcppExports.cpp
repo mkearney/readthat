@@ -16,16 +16,15 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// rcpp_download_file
-std::string rcpp_download_file(const std::string& url, const std::string& out, const bool verbose);
-RcppExport SEXP _readthat_rcpp_download_file(SEXP urlSEXP, SEXP outSEXP, SEXP verboseSEXP) {
+// downloadthatcpp
+std::string downloadthatcpp(const std::string& url, const std::string& out);
+RcppExport SEXP _readthat_downloadthatcpp(SEXP urlSEXP, SEXP outSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< const std::string& >::type url(urlSEXP);
     Rcpp::traits::input_parameter< const std::string& >::type out(outSEXP);
-    Rcpp::traits::input_parameter< const bool >::type verbose(verboseSEXP);
-    rcpp_result_gen = Rcpp::wrap(rcpp_download_file(url, out, verbose));
+    rcpp_result_gen = Rcpp::wrap(downloadthatcpp(url, out));
     return rcpp_result_gen;
 END_RCPP
 }
@@ -51,25 +50,37 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
-// readthemcpp
-std::vector<std::string> readthemcpp(std::vector<std::string> urls, std::vector<std::string> outs);
-RcppExport SEXP _readthat_readthemcpp(SEXP urlsSEXP, SEXP outsSEXP) {
+// readthosecpp
+std::vector<std::string> readthosecpp(std::vector<std::string> urls);
+RcppExport SEXP _readthat_readthosecpp(SEXP urlsSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::vector<std::string> >::type urls(urlsSEXP);
+    rcpp_result_gen = Rcpp::wrap(readthosecpp(urls));
+    return rcpp_result_gen;
+END_RCPP
+}
+// downloadthosecpp
+std::vector<std::string> downloadthosecpp(std::vector<std::string> urls, std::vector<std::string> outs);
+RcppExport SEXP _readthat_downloadthosecpp(SEXP urlsSEXP, SEXP outsSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
     Rcpp::traits::input_parameter< std::vector<std::string> >::type urls(urlsSEXP);
     Rcpp::traits::input_parameter< std::vector<std::string> >::type outs(outsSEXP);
-    rcpp_result_gen = Rcpp::wrap(readthemcpp(urls, outs));
+    rcpp_result_gen = Rcpp::wrap(downloadthosecpp(urls, outs));
     return rcpp_result_gen;
 END_RCPP
 }
 
 static const R_CallMethodDef CallEntries[] = {
     {"_readthat_readthiscpp", (DL_FUNC) &_readthat_readthiscpp, 1},
-    {"_readthat_rcpp_download_file", (DL_FUNC) &_readthat_rcpp_download_file, 3},
+    {"_readthat_downloadthatcpp", (DL_FUNC) &_readthat_downloadthatcpp, 2},
     {"_readthat_readthatcpp", (DL_FUNC) &_readthat_readthatcpp, 1},
     {"_readthat_asyncpp", (DL_FUNC) &_readthat_asyncpp, 1},
-    {"_readthat_readthemcpp", (DL_FUNC) &_readthat_readthemcpp, 2},
+    {"_readthat_readthosecpp", (DL_FUNC) &_readthat_readthosecpp, 1},
+    {"_readthat_downloadthosecpp", (DL_FUNC) &_readthat_downloadthosecpp, 2},
     {NULL, NULL, 0}
 };
 

@@ -31,6 +31,41 @@ You can install the development released version of readthat from Github with:
 remotes::install_github("mkearney/readthat")
 ```
 
+## Examples
+
+Let's say we want to read-in the source of the following websites:
+
+```{r}
+## a vector of URLs
+urls <- c(
+  "https://mikewk.com",
+  "https://cnn.com",
+  "https://www.cnn.com/us"
+)
+```
+
+Use `readthat()` to read or `downloadthat()` to download the text/source of a single file/URL
+
+```{r}
+## read single web/file (returns text vector)
+x <- readthat(urls[1])
+
+## download single web/file (returns path to downloaded file)
+downloadthat(urls[1], "/tmp/mikewk.html")
+```
+
+Use `readthose()` to read or `downloadthose()` to download the texts/sources of multiple files/URLs
+
+```{r}
+## read multiple URLs/files (returns text vector–a string for each input)
+x <- readthose(urls)
+
+## download multiple URLs/files (returns paths to downloaded files)
+downloadthose(urls, 
+  c("/tmp/mikewk.html", "/tmp/cnn.html", "/tmp/cnnworld.html"))
+```
+
+
 ## Comparisons
 
 Benchmark comparison for reading a text file:

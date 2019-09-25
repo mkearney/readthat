@@ -58,9 +58,9 @@ static std::size_t write_data_file(void *ptr,
 }
 
 // [[Rcpp::export]]
-std::string rcpp_download_file(const std::string& url,
-                               const std::string& out,
-                               const bool verbose = true) {
+std::string downloadthatcpp(const std::string& url,
+                            const std::string& out) {
+  const bool verbose = false;
   CURL *handle;
   FILE *outfile;
 

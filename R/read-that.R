@@ -1,6 +1,4 @@
-
-
-#' Read that file/webpage
+#' Read file/webpage
 #'
 #' Returns text/source from file or URL
 #'
@@ -13,4 +11,5 @@ readthat <- function(.x) UseMethod("readthat")
 readthat.default <- function(.x) {
   readthatcpp(.x)
 }
+
 

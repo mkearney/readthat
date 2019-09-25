@@ -5,8 +5,8 @@ readthiscpp <- function(url) {
     .Call(`_readthat_readthiscpp`, url)
 }
 
-rcpp_download_file <- function(url, out, verbose = TRUE) {
-    .Call(`_readthat_rcpp_download_file`, url, out, verbose)
+downloadthatcpp <- function(url, out) {
+    .Call(`_readthat_downloadthatcpp`, url, out)
 }
 
 readthatcpp <- function(path) {
@@ -17,7 +17,11 @@ asyncpp <- function(urls) {
     .Call(`_readthat_asyncpp`, urls)
 }
 
-readthemcpp <- function(urls, outs) {
-    .Call(`_readthat_readthemcpp`, urls, outs)
+readthosecpp <- function(urls) {
+    .Call(`_readthat_readthosecpp`, urls)
+}
+
+downloadthosecpp <- function(urls, outs) {
+    .Call(`_readthat_downloadthosecpp`, urls, outs)
 }
 
