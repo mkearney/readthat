@@ -82,7 +82,7 @@ bm_file <- bench::mark(
 bm_file
 ```
 
-![](man/figures/README-unnamed-chunk-2-1.png)
+![](man/figures/README-bm_file.png)
 
 Benchmark comparison for reading a web page:
 
@@ -95,10 +95,11 @@ bm_html <- bench::mark(
   readLines = readLines(x, warn = FALSE),
   readr = readr::read_lines(x),
   check = FALSE,
-  iterations = 10
+  iterations = 10,
+  filter_gc = TRUE
 )
 bm_html
 ```
 
-![](man/figures/README-unnamed-chunk-3-1.png)
+![](man/figures/README-bm_html.png)
 
