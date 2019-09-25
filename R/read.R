@@ -5,6 +5,7 @@
 #' @param .x Path to file or URL
 #' @return A string of read-in text
 #' @export
+#' @family read
 readthat <- function(.x) UseMethod("readthat")
 
 #' @export
@@ -20,6 +21,7 @@ readthat.default <- function(.x) {
 #' @return A character vector where each element is a string of read-in text
 #'   associated with each input.
 #' @export
+#' @family read
 readthose <- function(.x) UseMethod("readthose")
 
 #' @export

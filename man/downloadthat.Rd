@@ -17,3 +17,7 @@ A string of read-in text
 \description{
 Downloads text/source from file or URL
 }
+\seealso{
+Other download: \code{\link{downloadthose}}
+}
+\concept{download}

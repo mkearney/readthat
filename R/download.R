@@ -7,6 +7,7 @@
 #' @param .o File name to save the text/source as.
 #' @return A string of read-in text
 #' @export
+#' @family download
 downloadthat <- function(.x, .o) UseMethod("downloadthat")
 
 #' @export
@@ -23,6 +24,7 @@ downloadthat.default <- function(.x, .o) {
 #' @return A character vector where each element is a string of read-in text
 #'   associated with each input.
 #' @export
+#' @family download
 downloadthose <- function(.x, .o) UseMethod("downloadthose")
 
 #' @export

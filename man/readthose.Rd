@@ -16,3 +16,7 @@ A character vector where each element is a string of read-in text
 \description{
 Returns text/source from multiple files or URLs
 }
+\seealso{
+Other read: \code{\link{readthat}}
+}
+\concept{read}

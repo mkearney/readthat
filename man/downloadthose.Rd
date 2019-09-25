@@ -18,3 +18,7 @@ A character vector where each element is a string of read-in text
 \description{
 Downloads text/source from multiple files or URLs
 }
+\seealso{
+Other download: \code{\link{downloadthat}}
+}
+\concept{download}

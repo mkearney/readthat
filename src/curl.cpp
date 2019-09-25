@@ -3,6 +3,8 @@
 #include <sstream>
 #include <iostream>
 #include <fstream>
+#include <string>
+
 #include <regex>
 
 using namespace Rcpp;
@@ -76,7 +78,7 @@ std::string readthatcpp_(std::string path) {
     curl_global_cleanup();
     return out.str();
   }
-  return readit(path);
+  return readit(path_expand_(path));
 }
 
 static std::size_t write_data_file(void *ptr,

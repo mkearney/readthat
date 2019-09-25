@@ -84,6 +84,14 @@ bm_file <- bench::mark(
 bm_file
 ```
 
+
+```{r, include=FALSE}
+p1 <- ggplot2::autoplot(bm_file)
+p1 + ggplot2::ggsave("man/figures/README-bm_file.png",
+    width = 9, height = 5, units = "in")
+```
+
+
 ![](man/figures/README-bm_file.png)
 
 Benchmark comparison for reading a web page:
@@ -102,6 +110,13 @@ bm_html <- bench::mark(
 )
 bm_html
 ```
+
+```{r, include=FALSE}
+p2 <- ggplot2::autoplot(bm_html)
+p2 + ggplot2::ggsave("man/figures/README-bm_html.png",
+    width = 9, height = 5, units = "in")
+```
+
 
 ![](man/figures/README-bm_html.png)
 
