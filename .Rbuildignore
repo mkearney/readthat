@@ -1,4 +1,3 @@
-^readit\.Rproj$
 ^\.Rproj\.user$
 ^LICENSE\.md$
 ^README\.Rmd$
@@ -7,3 +6,4 @@
 ^\.travis\.yml$
 ^codecov\.yml$
 ^readthat\.Rproj$
+^cran-comments\.md$
