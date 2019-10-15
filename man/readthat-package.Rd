@@ -6,6 +6,8 @@
 \alias{readthat-package}
 \title{readthat: Read Text Data}
 \description{
+\if{html}{\figure{logo.png}{options: align='right'}}
+
 Quickly read in text from files or URLs.
 }
 \seealso{

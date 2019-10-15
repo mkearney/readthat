@@ -14,7 +14,7 @@ knitr::opts_chunk$set(
 library(readthat)
 ```
 
-# readthat
+# readthat <img src='man/figures/logo.png' align="right" height="173.5" />
 
 <!-- badges: start -->
 [![CRAN status](https://www.r-pkg.org/badges/version/readthat)](https://CRAN.R-project.org/package=readthat)

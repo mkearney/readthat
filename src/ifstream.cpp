@@ -14,6 +14,8 @@ std::string path_home() {
 }
 
 
+// [[Rcpp::plugins(cpp11)]]
+
 // [[Rcpp::export]]
 std::string readcpp(std::string& path) {
   std::regex pat(".*~.*");
