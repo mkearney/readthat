@@ -4,25 +4,10 @@
 #include <fstream>
 #include <string>
 
-#include <regex>
-
 using namespace Rcpp;
 
-std::string path_home() {
-  const char * home = getenv("HOME");
-  return home;
-}
-
-
-// [[Rcpp::plugins(cpp11)]]
-
 // [[Rcpp::export]]
-std::string readcpp(std::string& path) {
-  std::regex pat(".*~.*");
-  if (std::regex_match(path, pat)) {
-    std::regex pat(".*~");
-    path = std::regex_replace(path, pat, path_home());
-  }
+std::string readcpp(const std::string& path) {
   std::ifstream in(path.c_str());
   std::string content;
   in.seekg(0, std::ios::end);

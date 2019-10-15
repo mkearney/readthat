@@ -22,7 +22,7 @@ read.default <- function(.x) {
 
 read_path <- function(.x) {
   stopifnot(file.exists(.x))
-  readcpp(.x)
+  readcpp(normalizePath(.x))
 }
 
 read_url <- function(.x) {

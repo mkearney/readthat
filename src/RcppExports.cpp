@@ -6,12 +6,12 @@
 using namespace Rcpp;
 
 // readcpp
-std::string readcpp(std::string& path);
+std::string readcpp(const std::string& path);
 RcppExport SEXP _readthat_readcpp(SEXP pathSEXP) {
 BEGIN_RCPP
     Rcpp::RObject rcpp_result_gen;
     Rcpp::RNGScope rcpp_rngScope_gen;
-    Rcpp::traits::input_parameter< std::string& >::type path(pathSEXP);
+    Rcpp::traits::input_parameter< const std::string& >::type path(pathSEXP);
     rcpp_result_gen = Rcpp::wrap(readcpp(path));
     return rcpp_result_gen;
 END_RCPP
