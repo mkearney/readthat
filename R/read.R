@@ -6,26 +6,26 @@
 #' @return A string of read-in text
 #' @export
 #' @family read
-readthat <- function(.x) UseMethod("readthat")
+read <- function(.x) UseMethod("read")
 
 #' @export
-readthat.default <- function(.x) {
+read.default <- function(.x) {
   stopifnot(
     length(.x) == 1,
     is.character(.x)
   )
   if (grepl("^http", .x)) {
-    return(readthat_url(.x))
+    return(read_url(.x))
   }
-  readthat_path(.x)
+  read_path(.x)
 }
 
-readthat_path <- function(.x) {
+read_path <- function(.x) {
   stopifnot(file.exists(.x))
-  readthatcpp(.x)
+  readcpp(.x)
 }
 
-readthat_url <- function(.x) {
+read_url <- function(.x) {
   h <- curl::new_handle(followlocation = 1)
   curl::handle_setheaders(h,
     `User-Agent` = 'readthat',

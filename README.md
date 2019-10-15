@@ -39,18 +39,18 @@ urls <- c(
 )
 ```
 
-Use `readthat()` to read the text/source of a single file/URL
+Use `readthat::read()` to read the text/source of a single file/URL
 
 ``` r
 ## read single web/file (returns text vector)
-x <- readthat(urls[1])
+x <- read(urls[1])
 
 ## preview output
 substr(x, 1, 60)
 #> [1] "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n  <meta charset=\"ut"
 
 ## use apply functions to read multiple pages
-xx <- lapply(urls, readthat)
+xx <- lapply(urls, read)
 
 ## preview output
 lapply(xx, substr, 1, 60)
@@ -73,7 +73,7 @@ x <- "~/Dropbox/data.txt"
 bm_file <- bench::mark(
   readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
-  readthat = readthat(x),
+  readthat = read(x),
   readLines = readLines(x),
   check = FALSE
 )
@@ -81,10 +81,10 @@ bm_file
 #> # A tibble: 4 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext    753.8µs  780.6µs     1263.    4.88MB    12.5 
-#> 2 readr       158.3µs  163.9µs     5928.     2.7MB     8.30
-#> 3 readthat     32.6µs   33.5µs    29143.   21.69KB     2.91
-#> 4 readLines    89.4µs   92.6µs    10560.    8.79KB     4.06
+#> 1 readtext    747.7µs  774.6µs     1265.    4.88MB    12.5 
+#> 2 readr       157.1µs  163.2µs     5943.     2.7MB     8.29
+#> 3 readthat     40.1µs   41.7µs    23295.   23.94KB     6.99
+#> 4 readLines      89µs   94.6µs    10283.    8.79KB     2.02
 ```
 
 ![](man/figures/README-bm_file.png)
@@ -96,7 +96,7 @@ x <- "https://www.espn.com/nfl/scoreboard"
 bm_html <- bench::mark(
   httr = httr::content(httr::GET(x), as = "text", encoding = "UTF-8"),
   xml2 = xml2::read_html(x),
-  readthat = readthat(x),
+  readthat = read(x),
   readLines = readLines(x, warn = FALSE),
   readr = readr::read_lines(x),
   check = FALSE,
@@ -107,11 +107,11 @@ bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr         80.1ms  108.8ms      6.89    2.05MB    0.287
-#> 2 xml2          184ms  209.7ms      4.54    1.47MB    0.864
-#> 3 readthat     48.6ms   51.8ms     15.6    24.01KB    0    
-#> 4 readLines   304.1ms  330.2ms      2.84  446.09KB    0    
-#> 5 readr       153.7ms  174.2ms      5.45  617.49KB    0
+#> 1 httr         75.5ms  118.5ms      6.60    2.05MB    0    
+#> 2 xml2        194.4ms  206.3ms      4.66    1.47MB    0.887
+#> 3 readthat     52.4ms   55.7ms     13.4    24.01KB    0    
+#> 4 readLines   300.9ms  323.4ms      2.74  446.52KB    0    
+#> 5 readr       151.6ms  172.6ms      5.30  617.92KB    0
 ```
 
 ![](man/figures/README-bm_html.png)

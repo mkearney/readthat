@@ -6,3 +6,4 @@
 ^cleanup$
 ^\.travis\.yml$
 ^codecov\.yml$
+^readthat\.Rproj$

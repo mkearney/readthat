@@ -46,17 +46,17 @@ urls <- c(
 )
 ```
 
-Use `readthat()` to read the text/source of a single file/URL
+Use `readthat::read()` to read the text/source of a single file/URL
 
 ```{r}
 ## read single web/file (returns text vector)
-x <- readthat(urls[1])
+x <- read(urls[1])
 
 ## preview output
 substr(x, 1, 60)
 
 ## use apply functions to read multiple pages
-xx <- lapply(urls, readthat)
+xx <- lapply(urls, read)
 
 ## preview output
 lapply(xx, substr, 1, 60)
@@ -71,7 +71,7 @@ x <- "~/Dropbox/data.txt"
 bm_file <- bench::mark(
   readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
-  readthat = readthat(x),
+  readthat = read(x),
   readLines = readLines(x),
   check = FALSE
 )
@@ -95,7 +95,7 @@ x <- "https://www.espn.com/nfl/scoreboard"
 bm_html <- bench::mark(
   httr = httr::content(httr::GET(x), as = "text", encoding = "UTF-8"),
   xml2 = xml2::read_html(x),
-  readthat = readthat(x),
+  readthat = read(x),
   readLines = readLines(x, warn = FALSE),
   readr = readr::read_lines(x),
   check = FALSE,

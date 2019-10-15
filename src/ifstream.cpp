@@ -15,7 +15,7 @@ std::string path_home() {
 
 
 // [[Rcpp::export]]
-std::string readthatcpp(std::string& path) {
+std::string readcpp(std::string& path) {
   std::regex pat(".*~.*");
   if (std::regex_match(path, pat)) {
     std::regex pat(".*~");
