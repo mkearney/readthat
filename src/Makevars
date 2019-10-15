@@ -1,2 +1,0 @@
-PKG_LIBS = -lcurl
-CXX_STD = CXX11

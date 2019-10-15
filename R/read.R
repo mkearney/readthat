@@ -10,21 +10,31 @@ readthat <- function(.x) UseMethod("readthat")
 
 #' @export
 readthat.default <- function(.x) {
+  stopifnot(
+    length(.x) == 1,
+    is.character(.x)
+  )
+  if (grepl("^http", .x)) {
+    return(readthat_url(.x))
+  }
+  readthat_path(.x)
+}
+
+readthat_path <- function(.x) {
+  stopifnot(file.exists(.x))
   readthatcpp(.x)
 }
 
-#' Read file(s)/webpage(s)
-#'
-#' Returns text/source from multiple files or URLs
-#'
-#' @param .x Paths to files or URLs
-#' @return A character vector where each element is a string of read-in text
-#'   associated with each input.
-#' @export
-#' @family read
-readthose <- function(.x) UseMethod("readthose")
-
-#' @export
-readthose.default <- function(.x) {
-  readthosecpp(.x)
+readthat_url <- function(.x) {
+  h <- curl::new_handle(followlocation = 1)
+  curl::handle_setheaders(h,
+    `User-Agent` = 'readthat',
+    `Accept` = 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+    `Accept-Encoding` = 'gzip, deflate, br',
+    `Content-Type` = "text/html; charset=utf-8",
+    `Cache-Control` = "max-age=600"
+  )
+  r <- curl::curl_fetch_memory(.x, h)
+  rawToChar(r$content)
 }
+

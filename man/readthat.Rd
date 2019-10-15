@@ -15,7 +15,4 @@ A string of read-in text
 \description{
 Returns text/source from file or URL
 }
-\seealso{
-Other read: \code{\link{readthose}}
-}
 \concept{read}

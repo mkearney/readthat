@@ -1,28 +1,40 @@
 test_that("read functions works", {
 
   ##--------------------------------------------
-  ## THAT SINGLE
+  ## URL
   ##--------------------------------------------
   x <- readthat("https://mikewk.com")
   expect_gt(nchar(x), 100)
+  expect_null(names(x))
+  expect_length(x, 1L)
 
+  ##--------------------------------------------
+  ## path
+  ##--------------------------------------------
   dir <- tempdir()
   tmp <- file.path(dir, "mikewk.com")
-  x <- downloadthat("https://mikewk.com", tmp)
-  expect_true(is.character(x))
-  expect_equal(tmp, x)
+  writeLines(x, tmp)
+  x <- readthat(tmp)
+  expect_gt(nchar(x), 100)
+  expect_null(names(x))
+  expect_length(x, 1L)
 
   ##--------------------------------------------
-  ## THOSE MULTIPLE
+  ## URL & path
   ##--------------------------------------------
-  x <- readthose(c("https://mikewk.com", tmp))
+  x <- sapply(c("https://mikewk.com", tmp), readthat)
   expect_equal(length(x), 2)
+  expect_named(x)
+  expect_equal(c("https://mikewk.com", tmp), names(x))
   expect_gt(nchar(x[1]), 100)
   expect_gt(nchar(x[2]), 100)
 
-  x <- downloadthose(c("https://mikewk.com", "https://cv.mikewk.com"),
-    c(file.path(dir, "test1"), file.path(dir, "test2")))
-  expect_true(file.exists(file.path(dir, "test1")))
-  expect_true(file.exists(file.path(dir, "test2")))
-  expect_named(x)
+
+  ##--------------------------------------------
+  ## errors
+  ##--------------------------------------------
+  expect_error(readthat(rnorm(10)))
+  expect_error(readthat(c("https://mikewk.com", "https://mikewk.com")))
+  expect_error(readthat(""))
+  expect_error(readthat("https://"))
 })

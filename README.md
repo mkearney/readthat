@@ -39,31 +39,29 @@ urls <- c(
 )
 ```
 
-Use `readthat()` to read or `downloadthat()` to download the text/source
-of a single file/URL
+Use `readthat()` to read the text/source of a single file/URL
 
 ``` r
 ## read single web/file (returns text vector)
 x <- readthat(urls[1])
 
-## download single web/file (returns path to downloaded file)
-downloadthat(urls[1], "/tmp/mikewk.html")
-#> [1] "/tmp/mikewk.html"
-```
+## preview output
+substr(x, 1, 60)
+#> [1] "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n  <meta charset=\"ut"
 
-Use `readthose()` to read or `downloadthose()` to download the
-texts/sources of multiple
-files/URLs
+## use apply functions to read multiple pages
+xx <- lapply(urls, readthat)
 
-``` r
-## read multiple URLs/files (returns text vector–a string for each input)
-x <- readthose(urls)
-
-## download multiple URLs/files (returns paths to downloaded files)
-downloadthose(urls, 
-  c("/tmp/mikewk.html", "/tmp/cnn.html", "/tmp/cnnworld.html"))
-#>     https://mikewk.com        https://cnn.com https://www.cnn.com/us 
-#>     "/tmp/mikewk.html"        "/tmp/cnn.html"   "/tmp/cnnworld.html"
+## preview output
+lapply(xx, substr, 1, 60)
+#> [[1]]
+#> [1] "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n  <meta charset=\"ut"
+#> 
+#> [[2]]
+#> [1] "<!DOCTYPE html><html class=\"no-js\"><head><meta content=\"IE=e"
+#> 
+#> [[3]]
+#> [1] "<!DOCTYPE html><html class=\"no-js\"><head><meta content=\"IE=e"
 ```
 
 ## Comparisons
@@ -83,10 +81,10 @@ bm_file
 #> # A tibble: 4 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext      801µs    832µs     1190.    5.38MB    12.5 
-#> 2 readr       159.6µs    164µs     5966.    2.69MB    10.4 
-#> 3 readthat     28.3µs     29µs    33288.   11.06KB     0   
-#> 4 readLines   131.4µs    133µs     7378.   10.54KB     2.01
+#> 1 readtext    753.8µs  780.6µs     1263.    4.88MB    12.5 
+#> 2 readr       158.3µs  163.9µs     5928.     2.7MB     8.30
+#> 3 readthat     32.6µs   33.5µs    29143.   21.69KB     2.91
+#> 4 readLines    89.4µs   92.6µs    10560.    8.79KB     4.06
 ```
 
 ![](man/figures/README-bm_file.png)
@@ -102,18 +100,18 @@ bm_html <- bench::mark(
   readLines = readLines(x, warn = FALSE),
   readr = readr::read_lines(x),
   check = FALSE,
-  iterations = 10,
+  iterations = 25,
   filter_gc = TRUE
 )
 bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr          107ms    202ms      5.00    4.09MB    0    
-#> 2 xml2          304ms    325ms      2.95    2.73MB    0.738
-#> 3 readthat      233ms    301ms      3.24    1.05MB    0    
-#> 4 readLines     343ms    457ms      1.73    1.07MB    0    
-#> 5 readr         173ms    201ms      4.50    1.25MB    0.500
+#> 1 httr         80.1ms  108.8ms      6.89    2.05MB    0.287
+#> 2 xml2          184ms  209.7ms      4.54    1.47MB    0.864
+#> 3 readthat     48.6ms   51.8ms     15.6    24.01KB    0    
+#> 4 readLines   304.1ms  330.2ms      2.84  446.09KB    0    
+#> 5 readr       153.7ms  174.2ms      5.45  617.49KB    0
 ```
 
 ![](man/figures/README-bm_html.png)

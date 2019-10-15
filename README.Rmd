@@ -46,27 +46,21 @@ urls <- c(
 )
 ```
 
-Use `readthat()` to read or `downloadthat()` to download the text/source of a single file/URL
+Use `readthat()` to read the text/source of a single file/URL
 
 ```{r}
 ## read single web/file (returns text vector)
 x <- readthat(urls[1])
 
-## download single web/file (returns path to downloaded file)
-downloadthat(urls[1], "/tmp/mikewk.html")
+## preview output
+substr(x, 1, 60)
+
+## use apply functions to read multiple pages
+xx <- lapply(urls, readthat)
+
+## preview output
+lapply(xx, substr, 1, 60)
 ```
-
-Use `readthose()` to read or `downloadthose()` to download the texts/sources of multiple files/URLs
-
-```{r}
-## read multiple URLs/files (returns text vector–a string for each input)
-x <- readthose(urls)
-
-## download multiple URLs/files (returns paths to downloaded files)
-downloadthose(urls, 
-  c("/tmp/mikewk.html", "/tmp/cnn.html", "/tmp/cnnworld.html"))
-```
-
 
 ## Comparisons
 
@@ -105,7 +99,7 @@ bm_html <- bench::mark(
   readLines = readLines(x, warn = FALSE),
   readr = readr::read_lines(x),
   check = FALSE,
-  iterations = 10,
+  iterations = 25,
   filter_gc = TRUE
 )
 bm_html
