@@ -56,7 +56,7 @@ x <- read(urls[1])
 substr(x, 1, 60)
 
 ## use apply functions to read multiple pages
-xx <- lapply(urls, read)
+xx <- sapply(urls, read)
 
 ## preview output
 lapply(xx, substr, 1, 60)

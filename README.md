@@ -50,17 +50,17 @@ substr(x, 1, 60)
 #> [1] "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n  <meta charset=\"ut"
 
 ## use apply functions to read multiple pages
-xx <- lapply(urls, read)
+xx <- sapply(urls, read)
 
 ## preview output
 lapply(xx, substr, 1, 60)
-#> [[1]]
+#> $`https://mikewk.com`
 #> [1] "<!DOCTYPE html>\n<html lang=\"en\">\n<head>\n\n  <meta charset=\"ut"
 #> 
-#> [[2]]
+#> $`https://cnn.com`
 #> [1] "<!DOCTYPE html><html class=\"no-js\"><head><meta content=\"IE=e"
 #> 
-#> [[3]]
+#> $`https://www.cnn.com/us`
 #> [1] "<!DOCTYPE html><html class=\"no-js\"><head><meta content=\"IE=e"
 ```
 
@@ -81,10 +81,10 @@ bm_file
 #> # A tibble: 4 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext    747.7µs  774.6µs     1265.    4.88MB    12.5 
-#> 2 readr       157.1µs  163.2µs     5943.     2.7MB     8.29
-#> 3 readthat     40.1µs   41.7µs    23295.   23.94KB     6.99
-#> 4 readLines      89µs   94.6µs    10283.    8.79KB     2.02
+#> 1 readtext    754.5µs  781.3µs     1248.    4.88MB    12.5 
+#> 2 readr       159.1µs  165.6µs     5865.     2.7MB     8.30
+#> 3 readthat     40.7µs     42µs    23229.   23.94KB     6.97
+#> 4 readLines    89.1µs   90.6µs    10710.    8.79KB     2.02
 ```
 
 ![](man/figures/README-bm_file.png)
@@ -107,11 +107,11 @@ bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr         75.5ms  118.5ms      6.60    2.05MB    0    
-#> 2 xml2        194.4ms  206.3ms      4.66    1.47MB    0.887
-#> 3 readthat     52.4ms   55.7ms     13.4    24.01KB    0    
-#> 4 readLines   300.9ms  323.4ms      2.74  446.52KB    0    
-#> 5 readr       151.6ms  172.6ms      5.30  617.92KB    0
+#> 1 httr           72ms  118.4ms      7.06    2.05MB    0    
+#> 2 xml2        178.7ms  228.8ms      3.34    1.47MB    0.636
+#> 3 readthat     51.2ms   64.4ms     12.3    24.01KB    0    
+#> 4 readLines   335.5ms  390.7ms      2.38  446.78KB    0    
+#> 5 readr       154.4ms  175.4ms      3.93  618.18KB    0
 ```
 
 ![](man/figures/README-bm_html.png)
