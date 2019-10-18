@@ -8,3 +8,10 @@
 0 errors | 0 warnings | 1 note
 
 * This is a new release.
+
+-----------
+
+In response to suggested revisions, I have:
+
+* [x] Augmented package description (from 40 to 188 characters)
+* [x] Added examples to exported functions
