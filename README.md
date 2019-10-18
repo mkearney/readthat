@@ -69,22 +69,25 @@ lapply(xx, substr, 1, 60)
 Benchmark comparison for reading a text file:
 
 ``` r
-x <- "~/Dropbox/data.txt"
+## save a text file
+writeLines(read(urls[1]), x <- tempfile())
+
+## coompare read times
 bm_file <- bench::mark(
-  readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
   readthat = read(x),
   readLines = readLines(x),
   check = FALSE
 )
+
+## view results
 bm_file
-#> # A tibble: 4 x 6
+#> # A tibble: 3 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 readtext    810.2µs    838µs     1175.    4.89MB    10.3 
-#> 2 readr       162.2µs    167µs     5794.     2.7MB    10.4 
-#> 3 readthat     40.8µs     42µs    23061.   23.94KB     4.61
-#> 4 readLines   131.5µs    133µs     7214.   10.54KB     2.01
+#> 1 readr       262.2µs  273.9µs     3517.    3.69MB     4.05
+#> 2 readthat     83.7µs   86.2µs    10741.   28.65KB     4.04
+#> 3 readLines   144.8µs  150.7µs     6311.   13.16KB     0
 ```
 
 ![](man/figures/README-bm_file.png)
@@ -107,11 +110,11 @@ bm_html
 #> # A tibble: 5 x 6
 #>   expression      min   median `itr/sec` mem_alloc `gc/sec`
 #>   <bch:expr> <bch:tm> <bch:tm>     <dbl> <bch:byt>    <dbl>
-#> 1 httr         78.7ms  135.5ms      6.99    2.08MB    0.291
-#> 2 xml2          175ms  205.4ms      4.60    1.49MB    0.876
-#> 3 readthat     48.8ms   54.2ms     14.5    23.99KB    0    
-#> 4 readLines   311.2ms  322.3ms      2.83  455.72KB    0    
-#> 5 readr       148.8ms  172.6ms      4.03  626.36KB    0.168
+#> 1 httr         71.5ms    104ms      6.84     2.7MB    0.285
+#> 2 xml2        187.9ms    200ms      4.50    1.85MB    1.42 
+#> 3 readthat     48.6ms     52ms     14.1     23.9KB    0    
+#> 4 readLines   375.9ms    472ms      1.95  620.33KB    0    
+#> 5 readr       158.6ms    169ms      5.57   799.7KB    0.232
 ```
 
 ![](man/figures/README-bm_html.png)

@@ -15,4 +15,24 @@ A string of read-in text
 \description{
 Returns text/source from file or URL
 }
+\examples{
+
+## create a temp file containing multiple lines of text
+tmp <- tempfile()
+cat("TITLE", "", "By", "", "Some more text here", "",
+  "last line", sep = "\\n", file = tmp)
+
+## read contents from tmp
+read(tmp)
+
+## cleanup
+unlink(tmp)
+
+## read contents from a website
+read("http://httpbin.org/get")
+
+}
+\seealso{
+Other read: \code{\link{readl}}
+}
 \concept{read}

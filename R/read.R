@@ -6,6 +6,22 @@
 #' @return A string of read-in text
 #' @export
 #' @family read
+#' @examples
+#'
+#' ## create a temp file containing multiple lines of text
+#' tmp <- tempfile()
+#' cat("TITLE", "", "By", "", "Some more text here", "",
+#'   "last line", sep = "\n", file = tmp)
+#'
+#' ## read contents from tmp
+#' read(tmp)
+#'
+#' ## cleanup
+#' unlink(tmp)
+#'
+#' ## read contents from a website
+#' read("http://httpbin.org/get")
+#'
 read <- function(.x) UseMethod("read")
 
 #' @export
@@ -37,4 +53,3 @@ read_url <- function(.x) {
   r <- curl::curl_fetch_memory(.x, h)
   rawToChar(r$content)
 }
-

@@ -8,16 +8,13 @@ using namespace Rcpp;
 
 // [[Rcpp::export]]
 std::string readcpp(const std::string& path) {
-  std::ifstream in(path.c_str());
+  std::ifstream inp(path.c_str());
   std::string content;
-  in.seekg(0, std::ios::end);
-  content.resize(in.tellg());
-  in.seekg(0, std::ios::beg);
-  in.imbue( std::locale() );
-  in.read(&content[0], content.size());
-  in.close();
+  inp.seekg(0, std::ios::end);
+  content.resize(inp.tellg());
+  inp.seekg(0, std::ios::beg);
+  inp.imbue( std::locale() );
+  inp.read(&content[0], content.size());
+  inp.close();
   return content;
 }
-
-
-

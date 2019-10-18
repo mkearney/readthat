@@ -67,14 +67,18 @@ lapply(xx, substr, 1, 60)
 Benchmark comparison for reading a text file:
 
 ```{r}
-x <- "~/Dropbox/data.txt"
+## save a text file
+writeLines(read(urls[1]), x <- tempfile())
+
+## coompare read times
 bm_file <- bench::mark(
-  readtext = readtext::readtext(x),
   readr = readr::read_lines(x),
   readthat = read(x),
   readLines = readLines(x),
   check = FALSE
 )
+
+## view results
 bm_file
 ```
 

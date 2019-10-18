@@ -5,3 +5,7 @@ readcpp <- function(path) {
     .Call(`_readthat_readcpp`, path)
 }
 
+readlcpp <- function(filename, first = 1L, last = 0L) {
+    .Call(`_readthat_readlcpp`, filename, first, last)
+}
+

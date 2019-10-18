@@ -16,9 +16,23 @@ BEGIN_RCPP
     return rcpp_result_gen;
 END_RCPP
 }
+// readlcpp
+std::vector<std::string> readlcpp(std::string filename, const int first, const int last);
+RcppExport SEXP _readthat_readlcpp(SEXP filenameSEXP, SEXP firstSEXP, SEXP lastSEXP) {
+BEGIN_RCPP
+    Rcpp::RObject rcpp_result_gen;
+    Rcpp::RNGScope rcpp_rngScope_gen;
+    Rcpp::traits::input_parameter< std::string >::type filename(filenameSEXP);
+    Rcpp::traits::input_parameter< const int >::type first(firstSEXP);
+    Rcpp::traits::input_parameter< const int >::type last(lastSEXP);
+    rcpp_result_gen = Rcpp::wrap(readlcpp(filename, first, last));
+    return rcpp_result_gen;
+END_RCPP
+}
 
 static const R_CallMethodDef CallEntries[] = {
     {"_readthat_readcpp", (DL_FUNC) &_readthat_readcpp, 1},
+    {"_readthat_readlcpp", (DL_FUNC) &_readthat_readlcpp, 3},
     {NULL, NULL, 0}
 };
 

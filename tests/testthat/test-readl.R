@@ -1,12 +1,13 @@
-test_that("read functions works", {
+test_that("readl functions works", {
 
   ##--------------------------------------------
   ## URL
   ##--------------------------------------------
-  x <- read("https://mikewk.com")
-  expect_gt(nchar(x), 100)
+  x <- readl("https://mikewk.com")
+  expect_true(is.character(x))
+  expect_gt(length(x), 10)
+  expect_gt(nchar(x[1]), 4)
   expect_null(names(x))
-  expect_length(x, 1L)
 
   ##--------------------------------------------
   ## path
@@ -14,29 +15,31 @@ test_that("read functions works", {
   dir <- tempdir()
   tmp <- file.path(dir, "mikewk.com")
   writeLines(x, tmp)
-  x <- read(tmp)
-  expect_gt(nchar(x), 100)
+  x <- readl(tmp)
+  expect_true(is.character(x))
+  expect_gt(length(x), 10)
+  expect_gt(nchar(x[1]), 4)
   expect_null(names(x))
-  expect_length(x, 1L)
 
   ##--------------------------------------------
-  ## URL & path
+  ## first and last
   ##--------------------------------------------
-  x <- sapply(c("https://mikewk.com", tmp), read)
+  x <- readl(tmp, 1, 10)
+  expect_equal(length(x), 10)
+  expect_gt(nchar(x[1]), 4)
+  expect_null(names(x))
+  x <- readl(tmp, 10, 11)
+  expect_true(is.character(x))
   expect_equal(length(x), 2)
-  expect_named(x)
-  expect_equal(c("https://mikewk.com", tmp), names(x))
-  expect_gt(nchar(x[1]), 100)
-  expect_gt(nchar(x[2]), 100)
-
+  expect_null(names(x))
 
   ##--------------------------------------------
   ## errors
   ##--------------------------------------------
-  expect_error(read(rnorm(10)))
-  expect_error(read(c("https://mikewk.com", "https://mikewk.com")))
-  expect_error(read(""))
-  expect_error(read("https://"))
+  expect_error(readl(rnorm(10)))
+  expect_error(readl(c("https://mikewk.com", "https://mikewk.com")))
+  expect_error(readl(""))
+  expect_error(readl("https://"))
 
   ##--------------------------------------------
   ## cleanup
