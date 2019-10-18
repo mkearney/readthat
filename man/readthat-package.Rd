@@ -8,7 +8,8 @@
 \description{
 \if{html}{\figure{logo.png}{options: align='right'}}
 
-Quickly read in text from files or URLs.
+Quickly read contents from files or URLs. Functions provide a simple, consistent, and
+    performant interface for reading (all at once or line-by-line) the contents of files or web pages.
 }
 \seealso{
 Useful links:
